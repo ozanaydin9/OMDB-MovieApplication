@@ -1,0 +1,80 @@
+.moviecard{
+    display: inline-block;
+    width: 200px;
+    height: 325px;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin:20px 60px 20px 60px;
+    text-align: center;
+    background: white;
+    cursor: pointer;
+}
+
+.moviecard a {
+    color: #212529;
+    text-decoration: none;
+}
+
+.moviecard a:hover {
+    text-decoration: none;
+    color: #212529;
+}
+
+.moviecard:hover{
+    box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.4);
+}
+
+.cardImageArea {
+    width: 100%;
+    height: 220px;
+    text-align: center;
+
+}
+.cardImage{
+    width: 100%;
+    /*object-fit: contain;*/
+    border-radius: 10px 10px 0px 0px;
+    height: inherit;
+}
+
+hr.horizontalLine {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(224, 224, 224, 0.75), rgba(0, 0, 0, 0));
+    margin: 0;
+    margin-top: 0px;
+}
+
+.cardDetailArea {
+    text-decoration: none;
+}
+
+.cardimdb{
+    font-weight: bold;
+    font-size: 11px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.carddate{
+    font-weight: normal;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+.cardname {
+    border: 1px solid #F2F2F2;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 90%;
+    height: 28px;
+    margin: auto;
+    margin-top:10px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 4px;
+    font-size: 13px;
+}
