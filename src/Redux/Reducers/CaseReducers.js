@@ -4,7 +4,8 @@ const defaultState = {
     movies: [],
     movieDetail: [],
     errorMessage: [],
-    page: []
+    page: 1,
+    title: "Pokemon"
 };
 
 const CaseReducers = (state = defaultState, action) => {
@@ -13,7 +14,7 @@ const CaseReducers = (state = defaultState, action) => {
             return { ...state, isLoading: true};
 
         case 'GET_MOVIES_SUCCESS':
-            return { ...state, isLoading: false, movies: action.payload, totalResults: action.totalResults, errorMessage: action.errorMessage};
+            return { ...state, isLoading: false, movies: action.payload, totalResults: action.totalResults, errorMessage: action.errorMessage, page: action.pageGlobal};
 
         case 'GET_MOVIES_FAILED':
             return { ...state, isLoading: false, movies: action.payload};
@@ -28,7 +29,10 @@ const CaseReducers = (state = defaultState, action) => {
             return { ...state, isLoading: false, movieDetail: action.payload};
 
         case 'GET_PAGE':
-            return { ...state, isLoading: false, page: action.page};
+            return { ...state, isLoading: false, page: action.payload};
+
+        case 'GET_TITLE':
+            return { ...state, isLoading: false, title: action.payload};
 
         default:
             return state

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {selectMovies, selectMoviesAreLoading, selectTotalResults, selectErrorMessage, selectPage} from "../../Redux/Accessors/Accessors";
-import {getMovies} from "../../Redux/Actions/Actions";
+import {selectMovies, selectMoviesAreLoading, selectTotalResults, selectErrorMessage, selectPage, selectTitle} from "../../Redux/Accessors/Accessors";
+import {getMovies, getPage, getTitle} from "../../Redux/Actions/Actions";
 import MovieCard from "../MovieCard/MovieCard";
 import styles from './MovieList.module.css';
 import {Selectbox} from "../Selectbox/Selectbox";
@@ -14,34 +14,33 @@ const MovieList = (props) => {
     const errorMessage = useSelector(selectErrorMessage);
     const totalResults = useSelector(selectTotalResults);
     const pageGlobal = useSelector(selectPage);
-    console.log(pageGlobal)
+    const titleGlobal = useSelector(selectTitle);
 
-    const [s, setS] = useState("Pokemon");
     const [y, setY] = useState([]);
-    const [page, setPage] = useState(1);
     const [type, setType] = useState([]);
 
     useEffect(() => {
-        dispatch(getMovies(s, y, page, type))
-    }, [page]);
+        dispatch(getMovies(titleGlobal, y, pageGlobal, type))
+    }, [pageGlobal]);
 
     function handleGetMovies() {
-        dispatch(getMovies(s, y, page, type))
+        dispatch(getMovies(titleGlobal, y, 1, type))
+
     }
 
     function handlePaginationNumberClick(e) {
-        setPage(Number(e.target.id))
+        dispatch(getPage(Number(e.target.id)))
     }
 
     function handlePaginationNumberClickInc() {
-        if(page<pageNumbers.length){
-            setPage(page+1)
+        if(pageGlobal<pageNumbers.length){
+            dispatch(getPage(pageGlobal+1))
         }
     }
 
     function handlePaginationNumberClickDecr() {
-        if(page>1){
-            setPage(page-1)
+        if(pageGlobal>1){
+            dispatch(getPage(pageGlobal-1))
         }
     }
 
@@ -59,7 +58,7 @@ const MovieList = (props) => {
 
     const renderPageNumbers = pageNumbers.map(number => {
         return (
-            <a key={number} id={number} onClick={handlePaginationNumberClick} className={(page === Number(number) ? styles.active : '')}>
+            <a key={number} id={number} onClick={handlePaginationNumberClick} className={(pageGlobal === Number(number) ? styles.active : '')}>
                 {number}
             </a>
         );
@@ -78,11 +77,10 @@ const MovieList = (props) => {
 
     return (
         <div className={styles.movieList}>
-            {console.log("MOVIE LIST RENDERED")}
             <div className={styles.movieListContent}>
                 <div className={styles.searchArea}>
-                    <textarea placeholder={"Title"} value={s} className={styles.textarea} onKeyDown={onEnterPress} onChange={(e) => setS(e.target.value)}></textarea>
-                    <textarea placeholder={"Year"} className={styles.textarea} onKeyDown={onEnterPress} onChange={(e) => setY(e.target.value)}></textarea>
+                    <textarea placeholder={"Title"} value={titleGlobal} className={styles.textarea} onKeyDown={onEnterPress} onChange={(e) => {dispatch(getTitle(e.target.value))}}></textarea>
+                    <input type="number" style={{paddingTop: 0, border: "1px solid rgb(169, 169, 169)"}} placeholder={"Year"} className={styles.textarea} onKeyDown={onEnterPress} onChange={(e) => setY(e.target.value)}></input>
                     <Selectbox optionList={typeList} onChange={handleTypeChange}/>
                     <button onClick={handleGetMovies} className={styles.button}>Search</button>
                 </div>

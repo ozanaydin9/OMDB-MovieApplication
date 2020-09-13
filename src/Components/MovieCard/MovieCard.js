@@ -1,14 +1,14 @@
 import React from "react";
 import styles from './MovieCard.module.css';
 import {Link} from "react-router-dom";
-import imageNotFound from "../../Assets/Images/ImageNotFound.svg"
+import imgNotFound from "../../Assets/Images/imgnotfound.png";
 const MovieCard = ({Title, Year, imdbID, Poster}) => {
 
     return(
         <div className={styles.moviecard} title={Title}>
             <Link to={{pathname:"/moviedetail", state:{id:imdbID}}} >
                 <div className={styles.cardImageArea}>
-                    <img className={styles.cardImage} src={Poster==="N/A" ? imageNotFound : Poster}/>
+                    <img className={styles.cardImage} src={Poster==="N/A" ? imgNotFound : Poster}/>
                 </div>
                 <div><hr className={styles.horizontalLine}/></div>
                 <div className={styles.cardDetailArea}>
