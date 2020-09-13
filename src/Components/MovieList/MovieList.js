@@ -6,7 +6,7 @@ import MovieCard from "../MovieCard/MovieCard";
 import styles from './MovieList.module.css';
 import {Selectbox} from "../Selectbox/Selectbox";
 
-const MovieList = (props) => {
+const MovieList = () => {
 
     const dispatch = useDispatch();
     const movies = useSelector(selectMovies);
@@ -76,8 +76,8 @@ const MovieList = (props) => {
     };
 
     return (
-        <div className={styles.movieList}>
-            <div className={styles.movieListContent}>
+        <div>
+            <div>
                 <div className={styles.searchArea}>
                     <textarea placeholder={"Title"} value={titleGlobal} className={styles.textarea} onKeyDown={onEnterPress} onChange={(e) => {dispatch(getTitle(e.target.value))}}></textarea>
                     <input type="number" style={{paddingTop: 0, border: "1px solid rgb(169, 169, 169)"}} placeholder={"Year"} className={styles.textarea} onKeyDown={onEnterPress} onChange={(e) => setY(e.target.value)}></input>

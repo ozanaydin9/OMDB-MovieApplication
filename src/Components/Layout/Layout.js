@@ -22,7 +22,6 @@ const Layout = () => {
                     <MovieDetail />
                 </Route>
             </Switch>
-
         </div>
     )
 };

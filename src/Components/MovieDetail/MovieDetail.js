@@ -8,7 +8,7 @@ import imgNotFound from "../../Assets/Images/imgnotfound.png";
 import backLogo from "../../Assets/Images/back.svg";
 
 
-const MovieDetail = (props) => {
+const MovieDetail = () => {
 
     const dispatch = useDispatch();
     const movieDetail = useSelector(selectMovieDetails);
@@ -24,7 +24,6 @@ const MovieDetail = (props) => {
         <div className={styles.movieDetail}>
             <Link to="/">
                 <div className={`d-none d-sm-block  ${styles.back}`}><img src={backLogo}/></div>
-
             </Link>
             {isLoading ? ( <div style={{marginTop:40}}>
                                 <div className={styles.loading}>Loading...</div>
@@ -36,9 +35,9 @@ const MovieDetail = (props) => {
                 <div className={`row justify-content-center p-3`}>
                     <div className={styles.movieTitle}>{movieDetail.Title}</div>
                 </div>
-                <div className={`row ${styles.movieDetailContent}`}>
-                    <div className={`col-sm-12 col-md-4 col-lg-4 col-12 ${styles.movieDetailLeft}`}>
-                        <div className={styles.movieDetailLeftTop}>
+                <div className={`row`}>
+                    <div className={`col-sm-12 col-md-4 col-lg-4 col-12`}>
+                        <div>
                             <img className={styles.movieDetailImage} src={movieDetail.Poster==="N/A" ? imgNotFound : movieDetail.Poster}/>
                         </div>
                         <div className={styles.movieDetailLeftBottom}>
