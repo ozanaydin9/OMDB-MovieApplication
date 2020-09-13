@@ -7,7 +7,7 @@ import store from "./Redux/Store/Store";
 function App() {
   return (
       <Provider store={store}>
-          <BrowserRouter>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
              <Layout />
           </BrowserRouter>
       </Provider>
