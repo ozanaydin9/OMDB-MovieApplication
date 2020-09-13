@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import styles from './MovieDetail.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import {selectMovieDetails, selectMoviesAreLoading} from "../../Redux/Accessors/Accessors";
 import {Link, useLocation} from 'react-router-dom'
-import {getMovieDetail, getMovies} from "../../Redux/Actions/Actions";
+import {getMovieDetail} from "../../Redux/Actions/Actions";
 import imgNotFound from "../../Assets/Images/imgnotfound.png";
 import backLogo from "../../Assets/Images/back.svg";
 
@@ -23,7 +23,7 @@ const MovieDetail = () => {
     return(
         <div className={styles.movieDetail}>
             <Link to="/">
-                <div className={`d-none d-sm-block  ${styles.back}`}><img src={backLogo}/></div>
+                <div className={`d-none d-sm-block  ${styles.back}`}><img src={backLogo} alt={"back"}/></div>
             </Link>
             {isLoading ? ( <div style={{marginTop:40}}>
                                 <div className={styles.loading}>Loading...</div>
@@ -38,7 +38,7 @@ const MovieDetail = () => {
                 <div className={`row`}>
                     <div className={`col-sm-12 col-md-4 col-lg-4 col-12`}>
                         <div>
-                            <img className={styles.movieDetailImage} src={movieDetail.Poster==="N/A" ? imgNotFound : movieDetail.Poster}/>
+                            <img alt={"movie"} className={styles.movieDetailImage} src={movieDetail.Poster==="N/A" ? imgNotFound : movieDetail.Poster}/>
                         </div>
                         <div className={styles.movieDetailLeftBottom}>
                             <div className={styles.movieIMDB}>
