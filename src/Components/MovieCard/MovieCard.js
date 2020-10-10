@@ -8,7 +8,7 @@ const MovieCard = ({Title, Year, imdbID, Poster}) => {
         <div className={styles.moviecard} title={Title}>
             <Link to={{pathname:"/moviedetail", state:{id:imdbID}}} >
                 <div className={styles.cardImageArea}>
-                    <img className={styles.cardImage} src={Poster==="N/A" ? imgNotFound : Poster}/>
+                    <img alt={"movie"} className={styles.cardImage} src={Poster==="N/A" ? imgNotFound : Poster}/>
                 </div>
                 <div><hr className={styles.horizontalLine}/></div>
                 <div className={styles.cardDetailArea}>

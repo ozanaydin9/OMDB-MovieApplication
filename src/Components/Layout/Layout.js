@@ -11,7 +11,7 @@ const Layout = () => {
         <div className={styles.main}>
             <div className={styles.header}>
                 <Link to="/">
-                    <img className={styles.headerLogo} src={headerLogo}/>
+                    <img alt={"logo"} className={styles.headerLogo} src={headerLogo}/>
                 </Link>
             </div>
             <Switch>
